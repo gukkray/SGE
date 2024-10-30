@@ -1,0 +1,45 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{% block estilo %}
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block corpo %}
+
+<div class="container">
+    <h3>Lista de Alunos Registrados</h3>
+    <a href="{% url 'aluno_create' %}" class="btn btn-primary btn-sm">Cadastrar Novo Aluno</a>
+    
+    <hr>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Matrícula</th>
+                <th>Contato do Responsável</th>
+                <th>Opções</th>
+            </tr>
+            
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.idade }}</td>
+                <td>{{ aluno.matricula }}</td>
+                <td>{{ aluno.contato_responsavel }}</td>
+                <td>
+                    <a href="{% url 'aluno_update' aluno.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                    <a href="{% url 'aluno_delete' aluno.pk %}" class="btn btn-danger btn-sm" title="Excluir">x</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhum aluno registrado.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

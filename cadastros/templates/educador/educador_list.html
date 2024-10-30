@@ -1,0 +1,18 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+
+{% block corpo %}
+        
+<h1>Educadores</h1>
+<a href="{% url 'educador_create' %}">Adicionar Educador</a>
+<ul>
+    {% for educador in educadores %}
+    <li>
+        {{ educador.nome }} - {{ educador.modalidade }} 
+        <a href="{% url 'educador_update' educador.pk %}">Editar</a> | 
+        <a href="{% url 'educador_delete' educador.pk %}">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

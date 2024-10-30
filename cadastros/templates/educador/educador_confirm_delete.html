@@ -1,0 +1,12 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{% block corpo %}
+        
+<h1>Tem certeza de que deseja excluir o educador {{ educador.nome }}?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+</form>
+<a href="{% url 'educador_list' %}">Cancelar</a>
+{% endblock %}
