@@ -54,23 +54,53 @@
                     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                         <div class="sb-sidenav-menu">
                             <div class="nav">
-                                <div class="sb-sidenav-menu-heading">Core</div>
+                                <div class="sb-sidenav-menu-heading">INÍCIO</div>
                                 <a class="nav-link" href="{% url 'inicio' %}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Início
                                 </a>
-                                <div class="sb-sidenav-menu-heading">Interface</div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-sidenav-menu-heading">PRINCIPAIS</div>
+
+                                 <!-- Alunos -->
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAlunos" aria-expanded="false" aria-controls="collapseAlunos">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                     Alunos
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
-                                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <div class="collapse" id="collapseAlunos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="{% url 'aluno_create' %}">Cadastrar Aluno</a>
                                         <a class="nav-link" href="{% url 'aluno_list' %}">Listagem de Alunos</a>
                                     </nav>
                                 </div>
+
+                                <!-- Educadores -->
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEducadores" aria-expanded="false" aria-controls="collapseEducadores">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                    Educadores
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseEducadores" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="{% url 'educador_create' %}">Cadastrar Educador</a>
+                                        <a class="nav-link" href="{% url 'educador_list' %}">Listagem de Educadores</a>
+                                    </nav>
+                                </div>
+
+                                <!-- Turmas -->
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTurmas" aria-expanded="false" aria-controls="collapseTurmas">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>
+                                    Turmas
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="collapseTurmas" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="{% url 'turma_create' %}">Cadastrar Turma</a>
+                                        <a class="nav-link" href="{% url 'turma_list' %}">Listagem de Turmas</a>
+                                    </nav>
+                                </div>
+
+
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                     Pages

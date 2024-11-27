@@ -1,18 +1,43 @@
 {% extends 'modelo.html' %}
 {% load static %}
 
+{% block estilo %}
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+{% endblock %}
 
 {% block corpo %}
-        
-<h1>Educadores</h1>
-<a href="{% url 'educador_create' %}">Adicionar Educador</a>
-<ul>
-    {% for educador in educadores %}
-    <li>
-        {{ educador.nome }} - {{ educador.modalidade }} 
-        <a href="{% url 'educador_update' educador.pk %}">Editar</a> | 
-        <a href="{% url 'educador_delete' educador.pk %}">Excluir</a>
-    </li>
-    {% endfor %}
-</ul>
+
+<div class="container">
+    <h3>Lista de Educadores Registrados</h3>
+    <a href="{% url 'educador_create' %}" class="btn btn-primary btn-sm">Cadastrar Novo Educador</a>
+    
+    <hr>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>Contato</th>
+                <th>Opções</th>
+            </tr>
+            
+            {% for educador in educadores %}
+            <tr>
+                <td>{{ educador.nome }}</td>
+                <td>{{ educador.matricula }}</td>
+                <td>{{ educador.contato }}</td>
+                <td>
+                    <a href="{% url 'educador_update' educador.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                    <a href="{% url 'educador_delete' educador.pk %}" class="btn btn-danger btn-sm" title="Excluir">x</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhum educador registrado.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 {% endblock %}
