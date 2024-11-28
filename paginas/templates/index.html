@@ -5,4 +5,71 @@
 {% block titulo %}
 <title>Página Inicial</title>
 {% endblock %}
+{% block estilo %}
+<style>
+    .card:nth-child(odd) {
+    background-color: #0033a0; /* Azul */
+    }
 
+    .card:nth-child(even) {
+        background-color: #fedb00; /* Amarelo */
+        color: #000; /* Ajuste do texto para boa visibilidade */
+    }
+
+    .card a {
+        color: inherit;
+    }
+
+    .card-footer .small {
+        color: inherit;
+    }
+
+</style>
+{% endblock %}
+{% block corpo %}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Painel</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card text-white mb-4">
+                <div class="card-body">Alunos</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">Ver detalhes</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card text-white mb-4">
+                <div class="card-body">Turmas</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">Ver detalhes</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card text-white mb-4">
+                <div class="card-body">Educadores</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">Ver detalhes</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card text-white mb-4">
+                <div class="card-body">Aulas</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">Ver detalhes</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>       
+</div>
+
+{% endblock %}
