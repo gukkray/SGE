@@ -6,10 +6,31 @@
 <title>Autenticação</title>
 {% endblock %}
 
+{% block menu %}
+{% endblock %} 
+{% block menu1 %}
+{%endblock%}  
+
+{% block estilo %}
+<style>
+    .bg-effect {
+        background-color:  rgba(254, 219, 0, 0.6); /* Fundo amarelo */
+        background-image: 
+        radial-gradient(circle at 20% 30%, #0033a0 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, #0033a0 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, #0033a0 0%, transparent 50%);
+        background-size: cover; /* Ajusta o tamanho do fundo */
+        height: 100vh; /* Faz o fundo cobrir a altura total da tela */
+        margin: 0; /* Remove margens padrão */
+    }
+    
+    
+</style>
+{% endblock %}
 
 {% block corpo %}
-        
-<body class="bg-primary">
+
+<body class="bg-effect">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
@@ -19,7 +40,8 @@
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
                                     <h3 class="text-center font-weight-light my-4">
-                                        Login
+                                        <img src="{% static 'img/login.png' %}" width="100" alt="Login">
+
                                     </h3>
                                 </div>
                                 <div class="card-body">
