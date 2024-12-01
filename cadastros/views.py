@@ -73,3 +73,4 @@ class EducadorDeleteView(LoginRequiredMixin, DeleteView):
     model = Educador
     template_name = 'educador/educador_confirm_delete.html'
     success_url = reverse_lazy('educador_list')
+

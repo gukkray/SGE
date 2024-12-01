@@ -18,6 +18,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Horário</th>
+                <th>Opções</th>
             </tr>
             
             {% for turma in turmas %}
@@ -31,10 +32,24 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5">Nenhuma turma registrada.</td>
+                <td colspan="3">Nenhuma turma registrada.</td>
             </tr>
             {% endfor %}
         </table>
     </div>
+
+    <!-- Links de "Ver Detalhes" para Alunos, Educadores e Aulas -->
+    <div class="row mt-4">
+        <div class="col">
+            <a href="{% url 'aluno_list' %}" class="btn btn-secondary btn-sm">Ver Detalhes de Alunos</a>
+        </div>
+        <div class="col">
+            <a href="{% url 'educador_list' %}" class="btn btn-secondary btn-sm">Ver Detalhes de Educadores</a>
+        </div>
+        <div class="col">
+            <a href=class="btn btn-secondary btn-sm">Ver Detalhes de Aulas</a>
+        </div>
+    </div>
 </div>
+
 {% endblock %}

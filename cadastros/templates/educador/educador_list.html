@@ -39,5 +39,19 @@
             {% endfor %}
         </table>
     </div>
+
+    <!-- Links de "Ver Detalhes" para Turmas, Alunos e Aulas -->
+    <div class="row mt-4">
+        <div class="col">
+            <a href="{% url 'turma_list' %}" class="btn btn-secondary btn-sm">Ver Detalhes de Turmas</a>
+        </div>
+        <div class="col">
+            <a href="{% url 'aluno_list' %}" class="btn btn-secondary btn-sm">Ver Detalhes de Alunos</a>
+        </div>
+        <div class="col">
+            <a href=class="btn btn-secondary btn-sm">Ver Detalhes de Aulas</a>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
