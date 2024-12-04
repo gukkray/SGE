@@ -1,0 +1,199 @@
+html {
+    --body-color: #fffffc;
+    --header-color: #000000;
+    --header-button: #0033a0;
+    --color-weekdays: #0033a0;
+    --box-shadow: #0033a0;
+    --hover: #fffd97;
+    --current-day: #aebaf7;
+    --event-color: #0033a0;
+    --modal-event: #fafae8;
+    --color-day: rgb(255, 255, 227);
+  }
+  
+  button {
+    width: 80px; /* Botões menores */
+    cursor: pointer;
+    box-shadow: 0px 0px 2px gray;
+    border: none;
+    outline: none;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  #header {
+    padding: 10px;
+    color: var(--header-color);
+    font-size: 15px; /* Fonte reduzida */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #header button {
+    background-color: var(--header-button);
+  }
+  
+  #container {
+    width: 100%; /* Ajusta a largura para caber no card */
+    margin: auto; /* Centraliza o calendário */
+    padding: 10px; /* Adiciona espaçamento interno */
+  }
+  
+  #weekdays {
+    width: 100%;
+    display: flex;
+    color: var(--color-weekdays);
+  }
+  
+  #weekdays div {
+    width: calc(100% / 7 - 5px); /* Divide igualmente os dias da semana */
+    padding: 5px; /* Reduz o espaçamento interno */
+    text-align: center;
+  }
+  
+  #calendar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .day {
+    width: calc(100% / 7 - 10px); /* Ajusta largura proporcional */
+    padding: 5px; /* Reduz espaçamento interno */
+    height: 50px; /* Altura */
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: var(--color-day);
+    margin: 3px; /* Reduz espaçamento entre os dias */
+    box-shadow: 0px 0px 3px var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px; /* Menos arredondado */
+  }
+  
+  .day:hover {
+    background-color: var(--hover);
+  }
+  
+  .day + #currentDay {
+    background-color: var(--current-day);
+  }
+  
+  .event {
+    font-size: 10px;
+    padding: 3px;
+    background-color: var(--event-color);
+    color: white;
+    border-radius: 5px;
+    max-height: 55px;
+    overflow: hidden;
+  }
+  
+  .padding {
+    cursor: default !important;
+    background-color: var(--body-color) !important;
+    box-shadow: none !important;
+  }
+  
+  #newEventModal,
+  #deleteEventModal {
+    display: none;
+    z-index: 20;
+    padding: 25px;
+    background-color: var(--modal-event);
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+    width: 350px;
+    top: 100px;
+    left: calc(50% - 175px);
+    position: absolute;
+    font-family: sans-serif;
+  }
+  
+  #eventTitleInput {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 3px gray;
+  }
+  
+  #eventTitleInput.error {
+    border: 2px solid red;
+  }
+  
+  #cancelButton,
+  #deleteButton {
+    background-color: var(--header-color);
+  }
+  
+  #saveButton,
+  #closeButton {
+    background-color: var(--header-button);
+  }
+  
+  #eventText {
+    font-size: 14px;
+  }
+  
+  #modalBackDrop {
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Estilo dos cards padrão */
+  .card:nth-child(odd) {
+    background-color: #0033a0; /* Azul */
+  }
+  
+  .card:nth-child(even) {
+    background-color: #fedb00; /* Amarelo */
+    color: #000; /* Ajuste do texto para boa visibilidade */
+  }
+  
+  .card a {
+    color: inherit;
+  }
+  
+  .card-footer .small {
+    color: inherit;
+  }
+  
+  /* Estilo específico do card do calendário */
+  .card.calendario-card {
+    background-color: #fff; /* Fundo branco */
+    color: #000; /* Texto preto */
+    border: 1px solid #ddd; /* Borda leve */
+    box-shadow: 0px 0px 5px var(--box-shadow);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    #container {
+      width: 100%;
+    }
+  
+    #weekdays div,
+    .day {
+      width: calc(100% / 7 - 5px); /* Reduz proporcionalmente */
+    }
+  
+    button {
+      width: 50px; /* Botões ainda menores */
+      padding: 2px;
+    }
+  }
+  
