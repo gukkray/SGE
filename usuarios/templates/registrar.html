@@ -29,13 +29,17 @@
                                 </div>
                                 <div class="card-body">
                                     
-                                        <form action="" method="post">
+                                    <form method="POST">
                                         {% csrf_token %}
-                                        {{ form|crispy }}
-                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button class="btn btn-primary" type="submit">Cadastrar</button>
-                                        </div>
+                                        {{ form.as_p }}
+                                        <label for="grupo">Grupo:</label>
+                                        <select name="grupo" id="grupo">
+                                            <option value="Gestor">Gestor</option>
+                                            <option value="Educador">Educador</option>
+                                        </select>
+                                        <button type="submit">Registrar</button>
                                     </form>
+                                    
                                 </div>
                                 
                             </div>

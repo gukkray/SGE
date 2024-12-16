@@ -1,76 +1,89 @@
-from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .models import Turma, Aluno, Educador
 from .forms import TurmaForm, AlunoForm, EducadorForm
 
-# Turma CRUD
-class TurmaListView(LoginRequiredMixin, ListView):
+# Views para Turma
+class TurmaCreateView(PermissionRequiredMixin, CreateView):
+    model = Turma
+    form_class = TurmaForm
+    template_name = 'turma/turma_form.html'
+    success_url = reverse_lazy('turma_list')
+    permission_required = 'cadastros.add_turma'
+
+class TurmaListView(PermissionRequiredMixin, ListView):
     model = Turma
     template_name = 'turma/turma_list.html'
     context_object_name = 'turmas'
+    permission_required = 'cadastros.view_turma'
 
-class TurmaCreateView(LoginRequiredMixin, CreateView):
+
+class TurmaUpdateView(PermissionRequiredMixin, UpdateView):
     model = Turma
     form_class = TurmaForm
     template_name = 'turma/turma_form.html'
     success_url = reverse_lazy('turma_list')
+    permission_required = 'cadastros.change_turma'
 
-class TurmaUpdateView(LoginRequiredMixin, UpdateView):
-    model = Turma
-    form_class = TurmaForm
-    template_name = 'turma/turma_form.html'
-    success_url = reverse_lazy('turma_list')
-
-class TurmaDeleteView(LoginRequiredMixin, DeleteView):
+class TurmaDeleteView(PermissionRequiredMixin, DeleteView):
     model = Turma
     template_name = 'turma/turma_confirm_delete.html'
     success_url = reverse_lazy('turma_list')
+    permission_required = 'cadastros.delete_turma'
 
-# Aluno CRUD
-class AlunoListView(LoginRequiredMixin, ListView):
+# Views para Aluno
+class AlunoCreateView(PermissionRequiredMixin, CreateView):
+    model = Aluno
+    form_class = AlunoForm
+    template_name = 'aluno/aluno_form.html'
+    success_url = reverse_lazy('aluno_list')
+    permission_required = 'cadastros.add_aluno'
+
+class AlunoListView(PermissionRequiredMixin, ListView):
     model = Aluno
     template_name = 'aluno/aluno_list.html'
     context_object_name = 'alunos'
+    permission_required = 'cadastros.view_aluno'
+    
 
-class AlunoCreateView(LoginRequiredMixin, CreateView):
+class AlunoUpdateView(PermissionRequiredMixin, UpdateView):
     model = Aluno
     form_class = AlunoForm
     template_name = 'aluno/aluno_form.html'
     success_url = reverse_lazy('aluno_list')
+    permission_required = 'cadastros.change_aluno'
 
-class AlunoUpdateView(LoginRequiredMixin, UpdateView):
-    model = Aluno
-    form_class = AlunoForm
-    template_name = 'aluno/aluno_form.html'
-    success_url = reverse_lazy('aluno_list')
-
-class AlunoDeleteView(LoginRequiredMixin, DeleteView):
+class AlunoDeleteView(PermissionRequiredMixin, DeleteView):
     model = Aluno
     template_name = 'aluno/aluno_confirm_delete.html'
     success_url = reverse_lazy('aluno_list')
+    permission_required = 'cadastros.delete_aluno'
 
-# Educador CRUD
-class EducadorListView(LoginRequiredMixin, ListView):
+# Views para Educador
+class EducadorCreateView(PermissionRequiredMixin, CreateView):
+    model = Educador
+    form_class = EducadorForm
+    template_name = 'educador/educador_form.html'
+    success_url = reverse_lazy('educador_list')
+    permission_required = 'cadastros.add_educador'
+
+class EducadorListView(PermissionRequiredMixin, ListView):
     model = Educador
     template_name = 'educador/educador_list.html'
     context_object_name = 'educadores'
+    permission_required = 'cadastros.view_educador'
+ 
 
-class EducadorCreateView(LoginRequiredMixin, CreateView):
+class EducadorUpdateView(PermissionRequiredMixin, UpdateView):
     model = Educador
     form_class = EducadorForm
     template_name = 'educador/educador_form.html'
     success_url = reverse_lazy('educador_list')
+    permission_required = 'cadastros.change_educador'
 
-class EducadorUpdateView(LoginRequiredMixin, UpdateView):
-    model = Educador
-    form_class = EducadorForm
-    template_name = 'educador/educador_form.html'
-    success_url = reverse_lazy('educador_list')
-
-class EducadorDeleteView(LoginRequiredMixin, DeleteView):
+class EducadorDeleteView(PermissionRequiredMixin, DeleteView):
     model = Educador
     template_name = 'educador/educador_confirm_delete.html'
     success_url = reverse_lazy('educador_list')
-
+    permission_required = 'cadastros.delete_educador'
