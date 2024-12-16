@@ -3,6 +3,7 @@ from .views import (
     TurmaListView, TurmaCreateView, TurmaUpdateView, TurmaDeleteView,
     AlunoListView, AlunoCreateView, AlunoUpdateView, AlunoDeleteView,
     EducadorListView, EducadorCreateView, EducadorUpdateView, EducadorDeleteView, 
+    AulaListView, AulaCreateView, AulaUpdateView, AulaDeleteView,
 )
 
 urlpatterns = [
@@ -27,4 +28,10 @@ urlpatterns = [
     path('turmas/', TurmaListView.as_view(), name='turma_list'),
     path('alunos/', AlunoListView.as_view(), name='aluno_list'),
     path('educadores/', EducadorListView.as_view(), name='educador_list'),
+
+    # Aula URLs
+    path('aulas/', AulaListView.as_view(), name='aula_list'),
+    path('aulas/create/', AulaCreateView.as_view(), name='aula_create'),
+    path('aulas/update/<int:pk>/', AulaUpdateView.as_view(), name='aula_update'),
+    path('aulas/delete/<int:pk>/', AulaDeleteView.as_view(), name='aula_delete'),
 ]

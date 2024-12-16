@@ -73,3 +73,13 @@ class Educador(models.Model):
 
     def __str__(self):
         return f"Educador: {self.nome} - Modalidade: {self.modalidade}"
+
+class Aula(models.Model):
+    titulo = models.CharField(max_length=200, verbose_name="Título da Aula")
+    descricao = models.TextField(verbose_name="Descrição")
+    data_hora = models.DateTimeField(verbose_name="Data e Hora")
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE, related_name="aulas")
+    educador = models.ForeignKey(Educador, on_delete=models.SET_NULL, null=True, related_name="aulas")
+
+    def __str__(self):
+        return f"{self.titulo} - {self.turma.nome} ({self.data_hora.strftime('%d/%m/%Y %H:%M')})"

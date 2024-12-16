@@ -1,0 +1,47 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{% block estilo %}
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block corpo %}
+
+<div class="container">
+    <h3>Lista de Aulas Registradas</h3>
+    <a href="{% url 'aula_create' %}" class="btn btn-primary btn-sm">Cadastrar Nova Aula</a>
+    
+    <hr>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Título</th>
+                <th>Turma</th>
+                <th>Data</th>
+                <th>Educador</th>
+                <th>Ações</th>
+            </tr>
+            
+            {% for aula in aulas %}
+            <tr>
+                <td>{{ aula.titulo }}</td>
+                <td>{{ aula.turma.nome }}</td>
+                <td>{{ aula.data }}</td>
+                <td>{{ aula.educador.nome }}</td>
+                <td>
+                    <a href="{% url 'aula_update' aula.pk %}">Editar</a>
+                    <a href="{% url 'aula_delete' aula.pk %}">Deletar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Nenhuma aula registrada.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

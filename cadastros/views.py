@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from .models import Turma, Aluno, Educador
-from .forms import TurmaForm, AlunoForm, EducadorForm
+from .models import Turma, Aluno, Educador, Aula
+from .forms import TurmaForm, AlunoForm, EducadorForm, AulaForm
 
 # Views para Turma
 class TurmaCreateView(PermissionRequiredMixin, CreateView):
@@ -87,3 +87,31 @@ class EducadorDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'educador/educador_confirm_delete.html'
     success_url = reverse_lazy('educador_list')
     permission_required = 'cadastros.delete_educador'
+
+# Views para Aula
+class AulaCreateView(PermissionRequiredMixin, CreateView):
+    model = Aula
+    form_class = AulaForm
+    template_name = 'aula/aula_form.html'
+    success_url = reverse_lazy('aula_list')
+    permission_required = 'cadastros.add_aula'
+
+class AulaListView(PermissionRequiredMixin, ListView):
+    model = Aula
+    template_name = 'aula/aula_list.html'
+    context_object_name = 'aulas'
+    permission_required = 'cadastros.view_aula'
+
+class AulaUpdateView(PermissionRequiredMixin, UpdateView):
+    model = Aula
+    form_class = AulaForm
+    template_name = 'aula/aula_form.html'
+    success_url = reverse_lazy('aula_list')
+    permission_required = 'cadastros.change_aula'
+
+class AulaDeleteView(PermissionRequiredMixin, DeleteView):
+    model = Aula
+    template_name = 'aula/aula_confirm_delete.html'
+    success_url = reverse_lazy('aula_list')
+    permission_required = 'cadastros.delete_aula'
+
