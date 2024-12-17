@@ -1,0 +1,12 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{% block corpo %}
+  <h2>Excluir Frequência</h2>
+  <p>Tem certeza de que deseja excluir a frequência de "{{ object.aluno }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar Exclusão</button>
+  </form>
+  <a href="{% url 'frequencia_list' %}">Cancelar</a>
+{% endblock %}

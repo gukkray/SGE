@@ -1,0 +1,42 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+
+{% block corpo %}
+
+<div class="container">
+    <h3>Lista de frequencia</h3>
+    <a href="{% url 'frequencia_add' %}" class="btn btn-primary btn-sm">Cadastrar frequencia</a>
+    
+    <hr>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+      <tr>
+        <th>Data</th>
+        <th>Aluno</th>
+        <th>Presença</th>
+        <th>Ações</th>
+      </tr>
+ 
+      {% for frequencia in frequencias %}
+        <tr>
+          <td>{{ frequencia.data }}</td>
+          <td>{{ frequencia.aluno }}</td>
+          <td>{{ frequencia.presenca }}</td>
+          <td>
+            <a href="{% url 'frequencia_edit' frequencia.pk %}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="{% url 'frequencia_delete' frequencia.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhuma turma registrada.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+</div>
+{% endblock %}

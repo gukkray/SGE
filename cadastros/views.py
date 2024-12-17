@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from .models import Turma, Aluno, Educador, Aula
-from .forms import TurmaForm, AlunoForm, EducadorForm, AulaForm
+from .models import Turma, Aluno, Educador, Aula, Frequencia
+from .forms import TurmaForm, AlunoForm, EducadorForm, AulaForm, FrequenciaForm
 
 # Views para Turma
 class TurmaCreateView(PermissionRequiredMixin, CreateView):
@@ -115,3 +115,29 @@ class AulaDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('aula_list')
     permission_required = 'cadastros.delete_aula'
 
+# Views para Frequência
+class FrequenciaCreateView(PermissionRequiredMixin, CreateView):
+    model = Frequencia
+    form_class = FrequenciaForm
+    template_name = 'frequencia/frequencia_form.html'
+    success_url = reverse_lazy('frequencia_list')
+    permission_required = 'cadastros.add_frequencia'
+
+class FrequenciaListView(PermissionRequiredMixin, ListView):
+    model = Frequencia
+    template_name = 'frequencia/frequencia_list.html'
+    context_object_name = 'frequencias'
+    permission_required = 'cadastros.view_frequencia'
+
+class FrequenciaUpdateView(PermissionRequiredMixin, UpdateView):
+    model = Frequencia
+    form_class = FrequenciaForm
+    template_name = 'frequencia/frequencia_form.html'
+    success_url = reverse_lazy('frequencia_list')
+    permission_required = 'cadastros.change_frequencia'
+
+class FrequenciaDeleteView(PermissionRequiredMixin, DeleteView):
+    model = Frequencia
+    template_name = 'frequencia/frequencia_confirm_delete.html'
+    success_url = reverse_lazy('frequencia_list')
+    permission_required = 'cadastros.delete_frequencia'

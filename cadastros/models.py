@@ -83,3 +83,18 @@ class Aula(models.Model):
 
     def __str__(self):
         return f"{self.titulo} - {self.turma.nome} ({self.data_hora.strftime('%d/%m/%Y %H:%M')})"
+
+
+class Frequencia(models.Model):
+    PRESENCA_CHOICES = [
+        ('P', 'Presente'),
+        ('A', 'Ausente'),
+        ('J', 'Justificado'),
+    ]
+
+    data = models.DateField()
+    aluno = models.ForeignKey('Aluno', on_delete=models.CASCADE)
+    presenca = models.CharField(max_length=1, choices=PRESENCA_CHOICES)
+
+    def __str__(self):
+        return f"{self.aluno} - {self.data} - {self.get_presenca_display()}"

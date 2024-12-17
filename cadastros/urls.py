@@ -3,7 +3,8 @@ from .views import (
     TurmaListView, TurmaCreateView, TurmaUpdateView, TurmaDeleteView,
     AlunoListView, AlunoCreateView, AlunoUpdateView, AlunoDeleteView,
     EducadorListView, EducadorCreateView, EducadorUpdateView, EducadorDeleteView, 
-    AulaListView, AulaCreateView, AulaUpdateView, AulaDeleteView,
+    AulaListView, AulaCreateView, AulaUpdateView, AulaDeleteView, 
+    FrequenciaCreateView, FrequenciaListView, FrequenciaUpdateView, FrequenciaDeleteView
 )
 
 urlpatterns = [
@@ -34,4 +35,10 @@ urlpatterns = [
     path('aulas/create/', AulaCreateView.as_view(), name='aula_create'),
     path('aulas/update/<int:pk>/', AulaUpdateView.as_view(), name='aula_update'),
     path('aulas/delete/<int:pk>/', AulaDeleteView.as_view(), name='aula_delete'),
+
+    # Fequencia URLs
+    path('frequencias/', FrequenciaListView.as_view(), name='frequencia_list'),
+    path('frequencias/adicionar/', FrequenciaCreateView.as_view(), name='frequencia_add'),
+    path('frequencias/<int:pk>/editar/', FrequenciaUpdateView.as_view(), name='frequencia_edit'),
+    path('frequencias/<int:pk>/excluir/', FrequenciaDeleteView.as_view(), name='frequencia_delete'),
 ]

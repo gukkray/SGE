@@ -1,5 +1,5 @@
 from django import forms
-from .models import Turma, Aluno, Educador, Aula
+from .models import Turma, Aluno, Educador, Aula, Frequencia
 
 class TurmaForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,8 @@ class AulaForm(forms.ModelForm):
     class Meta:
         model = Aula
         fields = ['titulo', 'descricao', 'data_hora', 'turma', 'educador']
+
+class FrequenciaForm(forms.ModelForm):
+    class Meta:
+        model = Frequencia
+        fields = ['data', 'aluno', 'presenca']  # Ajuste conforme os campos do seu modelo
