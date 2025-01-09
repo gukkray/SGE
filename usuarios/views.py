@@ -9,10 +9,18 @@ class UsuarioCreate(CreateView):
     success_url = reverse_lazy('login')
 
     def form_valid(self, form):
-        response = super().form_valid(form)
+        # Salva o objeto, mas ainda sem salvar no banco de dados
+        user = form.save(commit=False)
+        # Criptografa a senha
+        user.set_password(form.cleaned_data['password'])
+        # Salva o usuário no banco de dados
+        user.save()
+
+        # Associa o usuário ao grupo escolhido
         grupo = self.request.POST.get('grupo')
         if grupo == 'Gestor':
-            self.object.groups.add(Group.objects.get(name='Gestores'))
+            user.groups.add(Group.objects.get(name='Gestores'))
         elif grupo == 'Educador':
-            self.object.groups.add(Group.objects.get(name='Educadores'))
-        return response
+            user.groups.add(Group.objects.get(name='Educadores'))
+
+        return super().form_valid(form)
